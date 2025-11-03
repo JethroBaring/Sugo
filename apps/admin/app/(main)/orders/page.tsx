@@ -4,10 +4,16 @@ import { useEffect, useState } from "react"
 import { Orders } from "@/components/orders/orders"
 import { getOrdersWithDetails } from "@/lib/api/orders"
 import { OrdersSkeleton } from "@/components/skeletons/orders-skeleton"
-import type { Order } from "@/lib/api/orders"
+import type { Order, User, Delivery } from "@/lib/types/database"
+
+type OrderWithDetails = Order & {
+  customer: User
+  rider?: User
+  delivery?: Delivery
+}
 
 export default function OrdersPage() {
-  const [orders, setOrders] = useState<Order[]>([])
+  const [orders, setOrders] = useState<OrderWithDetails[]>([])
   const [totalCount, setTotalCount] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
