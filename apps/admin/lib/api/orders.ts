@@ -1,6 +1,9 @@
 import { createClient } from "@/lib/supabase/client"
 import type { Order, Delivery, OrdersResponse, OrdersFilters, OrderStats, User } from "../types"
 
+// Re-export types for convenience
+export type { Order, Delivery, OrdersResponse, OrdersFilters, OrderStats, User }
+
 export async function getOrders(
   page: number = 1,
   limit: number = 10,
